@@ -60,6 +60,9 @@ func main() {
 	transactionHandler := handlers.NewTransactionHandler(transactionService)
 
 	http.HandleFunc("/api/checkout", transactionHandler.HandleCheckout)
+	http.HandleFunc("/api/report/hari-ini", transactionHandler.HandleTodayReport) // GET
+
+	http.HandleFunc("/api/report", transactionHandler.HandleReport) // GET
 
 	addr := ":" + config.Port
 	fmt.Println("Server running di", addr)
